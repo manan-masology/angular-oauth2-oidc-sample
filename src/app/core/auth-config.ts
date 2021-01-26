@@ -1,12 +1,13 @@
 import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authConfig: AuthConfig = {
-  issuer: 'https://demo.identityserver.io',
-  clientId: 'interactive.public', // The "Auth Code + PKCE" client
+  issuer: 'https://auth-dev.mdapps-staging.com',
+  clientId: 'angular-test-app', // The "Auth Code + PKCE" client
   responseType: 'code',
-  redirectUri: window.location.origin + '/index.html',
+  redirectUri: 'http://localhost:4200',
+  postLogoutRedirectUri: 'http://localhost:4200',
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  scope: 'openid profile email api', // Ask offline_access to support refresh token refreshes
+  scope: 'openid profile email apiApp', // Ask offline_access to support refresh token refreshes
   useSilentRefresh: true, // Needed for Code Flow to suggest using iframe-based refreshes
   silentRefreshTimeout: 5000, // For faster testing
   timeoutFactor: 0.25, // For faster testing
